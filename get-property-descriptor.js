@@ -1,7 +1,7 @@
 module.exports= function getPropertyDescriptor(o, prop){
 	var proto = o,
 	  descriptor
-	while (proto && !(descriptor = Object.getOwnPropertyDescriptor(proto, name))) {
+	while (proto && !(descriptor = Object.getOwnPropertyDescriptor(proto, prop))) {
 		proto = Object.getPrototypeOf(proto)
 	}
 	return descriptor
