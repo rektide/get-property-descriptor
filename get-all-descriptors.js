@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports= function getPropertyDescriptor(o){
+module.exports= function getPropertyDescriptor(o, visibleOnly){
 	var cursor= o,
 	  descriptors= {}
 	while (cursor){
@@ -9,12 +9,18 @@ module.exports= function getPropertyDescriptor(o){
 		  symbols= Object.getOwnPropertySymbols(cursor)
 		for(var name of names){
 			if(descriptors[name] === undefined){
-				descriptors[name]= Object.getOwnPropertyDescriptor(cursor, name)
+				var descriptor= Object.getOwnPropertyDescriptor(cursor, name)
+				if(!visibleOnly || descriptor.enumerable){
+					descriptors[name]= descriptor
+				}
 			}
 		}
 		for(var symbol of symbols){
 			if(descriptors[symbol] === undefined){
-				descriptors[symbol]= Object.getOwnPropertyDescriptor(cursor, symbol)
+				var descriptor= Object.getOwnPropertyDescriptor(cursor, name)
+				if(!visibleOnly || descriptor.enumerable){
+					descriptors[name]= descriptor
+				}
 			}
 		}
 		cursor= Object.getPrototypeOf(cursor)
