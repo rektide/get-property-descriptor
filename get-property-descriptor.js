@@ -1,3 +1,5 @@
+"use strict"
+
 module.exports= function getPropertyDescriptor(o, prop){
 	var proto = o,
 	  descriptor
