@@ -8,4 +8,4 @@ export function getPropertyDescriptor(o, prop){
 	}
 	return descriptor
 }
-export defualt getPropertyDescriptor
+export default getPropertyDescriptor

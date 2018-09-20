@@ -6,7 +6,7 @@
 	"module": "index.js",
 	"main": "get-property-descriptor.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "node -r esm .test"
 	},
 	"repository": {
 		"type": "git",
@@ -17,5 +17,9 @@
 	"bugs": {
 		"url": "https://github.com/rektide/get-property-descriptor/issues"
 	},
-	"homepage": "https://github.com/rektide/get-property-descriptor"
+	"homepage": "https://github.com/rektide/get-property-descriptor",
+	"devDependencies": {
+		"esm": "^3.0.84",
+		"tape": "^4.9.1"
+	}
 }

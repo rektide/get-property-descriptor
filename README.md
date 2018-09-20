@@ -1,3 +1,3 @@
 # GetPropertyDescriptor
 
-Check for a property descriptor on an object.
+> Check for a property descriptor on an object.
