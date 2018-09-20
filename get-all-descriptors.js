@@ -13,6 +13,7 @@ export function *getAllDescriptors( o, {onlyVisible, omitSymbols, omitDescriptor
 				seen.add( name)
 				let descriptor= Object.getOwnPropertyDescriptor( cursor, name)
 				if( !onlyVisible|| descriptor.enumerable){
+					descriptor.name = name
 					yield descriptor
 				}
 			}
@@ -24,8 +25,9 @@ export function *getAllDescriptors( o, {onlyVisible, omitSymbols, omitDescriptor
 					continue
 				}
 				seen.add( symbol)
-				let descriptor= Object.getOwnPropertyDescriptor( cursor, name)
+				let descriptor= Object.getOwnPropertyDescriptor( cursor, symbol)
 				if( !onlyVisible|| descriptor.enumerable){
+					descriptor.symbol = symbol
 					yield descriptor
 				}
 			}
