@@ -3,7 +3,7 @@
 export function *getAllDescriptors( o, {onlyVisible, omitSymbols, omitDescriptors}= {}){
 	let cursor= o
 	const seen = new Set()
-	while( cursor){
+	while( cursor&& cursor!= Object.prototype){
 		if( !omitDescriptors){
 			let names= Object.getOwnPropertyNames( cursor)
 			for(let name of names){
