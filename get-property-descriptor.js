@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports= function getPropertyDescriptor(o, prop){
+export function getPropertyDescriptor(o, prop){
 	var proto = o,
 	  descriptor
 	while (proto && !(descriptor = Object.getOwnPropertyDescriptor(proto, prop))) {
@@ -8,3 +8,4 @@ module.exports= function getPropertyDescriptor(o, prop){
 	}
 	return descriptor
 }
+export defualt getPropertyDescriptor
