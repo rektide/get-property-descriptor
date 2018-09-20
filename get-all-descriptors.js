@@ -1,29 +1,32 @@
 "use strict"
 
-module.exports= function getPropertyDescriptor(o, visibleOnly){
-	var cursor= o,
-	  descriptors= {}
-	while (cursor){
-		var
-		  names= Object.getOwnPropertyNames(cursor),
-		  symbols= Object.getOwnPropertySymbols(cursor)
-		for(var name of names){
-			if(descriptors[name] === undefined){
-				var descriptor= Object.getOwnPropertyDescriptor(cursor, name)
-				if(!visibleOnly || descriptor.enumerable){
-					descriptors[name]= descriptor
+export function *getAllDescriptors( o, {onlyVisible, omitSymbols, omitDescriptors}= {}){
+	let cursor= o
+	while( cursor){
+		if( !omitDescriptors){
+			let names= Object.getOwnPropertyNames( cursor)
+			for(let name of names){
+				if(descriptors[name] === undefined){
+					let descriptor= Object.getOwnPropertyDescriptor(cursor, name)
+					if(!visibleOnly || descriptor.enumerable){
+						yield descriptor
+					}
 				}
 			}
 		}
-		for(var symbol of symbols){
-			if(descriptors[symbol] === undefined){
-				var descriptor= Object.getOwnPropertyDescriptor(cursor, name)
-				if(!visibleOnly || descriptor.enumerable){
-					descriptors[name]= descriptor
+		if( !symbols){
+			let symbols= Object.getOwnPropertySymbols( cursor)
+			for(let symbol of symbols){
+				if(descriptors[symbol] === undefined){
+					let descriptor= Object.getOwnPropertyDescriptor(cursor, name)
+					if(!visibleOnly || descriptor.enumerable){
+						yield descriptor
+					}
 				}
 			}
 		}
 		cursor= Object.getPrototypeOf(cursor)
 	}
-	return descriptors
+
 }
+export default getAllDescriptors
