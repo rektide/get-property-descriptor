@@ -2,26 +2,31 @@
 
 export function *getAllDescriptors( o, {onlyVisible, omitSymbols, omitDescriptors}= {}){
 	let cursor= o
+	const seen = new Set()
 	while( cursor){
 		if( !omitDescriptors){
 			let names= Object.getOwnPropertyNames( cursor)
 			for(let name of names){
-				if(descriptors[name] === undefined){
-					let descriptor= Object.getOwnPropertyDescriptor(cursor, name)
-					if(!visibleOnly || descriptor.enumerable){
-						yield descriptor
-					}
+				if( seen.has( name)){
+					continue
+				}
+				seen.add( name)
+				let descriptor= Object.getOwnPropertyDescriptor( cursor, name)
+				if( !onlyVisible|| descriptor.enumerable){
+					yield descriptor
 				}
 			}
 		}
-		if( !symbols){
+		if( !omitSymbols){
 			let symbols= Object.getOwnPropertySymbols( cursor)
 			for(let symbol of symbols){
-				if(descriptors[symbol] === undefined){
-					let descriptor= Object.getOwnPropertyDescriptor(cursor, name)
-					if(!visibleOnly || descriptor.enumerable){
-						yield descriptor
-					}
+				if( seen.has( symbol)){
+					continue
+				}
+				seen.add( symbol)
+				let descriptor= Object.getOwnPropertyDescriptor( cursor, name)
+				if( !onlyVisible|| descriptor.enumerable){
+					yield descriptor
 				}
 			}
 		}
