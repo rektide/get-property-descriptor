@@ -1,7 +1,7 @@
 {
 	"name": "get-property-descriptor",
 	"description": "Check for a property descriptor on an object.",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"esm": true,
 	"module": "index.js",
 	"main": "get-property-descriptor.js",
@@ -19,7 +19,7 @@
 	},
 	"homepage": "https://github.com/rektide/get-property-descriptor",
 	"devDependencies": {
-		"esm": "^3.0.84",
+		"esm": "^3.1.1",
 		"tape": "^4.9.1"
 	}
 }
