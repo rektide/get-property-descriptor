@@ -1,8 +1,8 @@
 import tape from "tape"
 import getAllDescriptors from "../get-all-descriptors.js"
 
-import Base from "./fixture/base"
-import Derived from "./fixture/derived"
+import Base from "./fixture/base.js"
+import Derived from "./fixture/derived.js"
 
 export function getAllDescriptorsTests(){
 	walkDerived()

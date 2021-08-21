@@ -1,8 +1,8 @@
 import tape from "tape"
 import getPropertyDescriptor from "../get-property-descriptor.js"
 
-import Base from "./fixture/base"
-import Derived from "./fixture/derived"
+import Base from "./fixture/base.js"
+import Derived from "./fixture/derived.js"
 
 export function getPropertyDescriptorTests(){
 	findBaseShoutOut()
